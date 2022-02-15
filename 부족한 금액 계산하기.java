@@ -15,5 +15,7 @@ class Solution {
     }
 }
 
-// 1. answer, result 의 변수형 long으로 선언하기
-// 2. result > money 조건문 넣어주기
+/*
+1. answer, result 의 변수형 long으로 선언하기
+2. result > money 조건문 넣어주기
+*/

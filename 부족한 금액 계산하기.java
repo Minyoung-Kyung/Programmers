@@ -3,7 +3,7 @@ class Solution {
         long answer = 0;
         long result = 0; // result price
         
-        for(int i  = 1; i < count+1; i++) {
+        for(int i  = 1; i < count + 1; i++) {
             result += i * price;
         }
         

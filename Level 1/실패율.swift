@@ -1,5 +1,5 @@
 // https://programmers.co.kr/learn/courses/30/lessons/42889
-// 03.01 > 테스트 5, 9번 실패 (시간 초과), 정확성 : 92.6
+// 03.01 > 테스트 5, 22번 실패 (시간 초과), 정확성 : 92.6
 
 import Foundation
 

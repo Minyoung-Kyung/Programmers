@@ -1,0 +1,36 @@
+-- 루시와 엘라 찾기
+SELECT ANIMAL_ID, NAME, SEX_UPON_INTAKE
+FROM ANIMAL_INS
+WHERE NAME IN ('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')
+ORDER BY ANIMAL_ID;
+
+-- 이름에 el이 들어가는 동물 찾기
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+WHERE Lower(NAME) LIKE '%el%' -- 소문자로 통일
+AND ANIMAL_TYPE = 'Dog'
+ORDER BY NAME ASC
+
+-- 중성화 여부 파악하기
+-- 상황에 따라 다른 데이터를 반환하는 CASE문
+-- Neutered, Spayed : 중성화 O
+SELECT ANIMAL_ID, NAME,
+CASE 
+    WHEN SEX_UPON_INTAKE LIKE '%Neutered%' THEN 'O'
+    WHEN SEX_UPON_INTAKE LIKE '%Spayed%' THEN 'O'
+    ELSE 'X'
+    END AS 중성화
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID ASC;
+
+-- 오랜 기간 보호한 동물(2)
+SELECT ANIMAL_ID, NAME FROM ( 
+    SELECT I.ANIMAL_ID, O.NAME 
+    FROM ANIMAL_INS I, ANIMAL_OUTS O 
+    WHERE I.ANIMAL_ID = O.ANIMAL_ID 
+    ORDER BY O.DATETIME - i.DATETIME DESC ) 
+WHERE ROWNUM <= 2;
+
+-- DATETIME에서 DATE로 형 변환
+SELECT ANIMAL_ID, NAME, TO_DATE(DATETIME) AS 날짜
+FROM ANIMAL_INS;

@@ -1,5 +1,5 @@
 func solution(_ s:String) -> String {
-    var sArr = s.lowercased().components(separatedBy: " ")
+    var sArr = s.lowercased().components(separatedBy: " ") // 문자열을 소문자로 변환한 후 공백을 기준으로 나눠서 배열에 담기
     var answer = ""
     
     for i in 0..<sArr.count {

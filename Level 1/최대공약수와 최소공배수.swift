@@ -8,11 +8,11 @@ func solution(_ n:Int, _ m:Int) -> [Int] {
 }
 
 func gcd(_ a: Int, _ b: Int) -> Int {
-  let r = a % b
+    let r = a % b
     
-  if r != 0 {
-    return gcd(b, r)
-  } else {
-    return b
-  }
+    if r != 0 {
+        return gcd(b, r)
+    } else {
+        return b
+    }
 }

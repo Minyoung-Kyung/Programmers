@@ -9,9 +9,9 @@ func solution(_ s:String) -> String {
         
         for j in 0..<sArr[i].count {
             let index = sArr[i].index(sArr[i].startIndex, offsetBy: j)
-            if j % 2 == 1 {
+            if j % 2 == 1 { // 단어별 홀수번째 알파벳은 소문자로 변환
                 answer += String(sArr[i][index]).lowercased()
-            } else {
+            } else { // 단어별 짝수번째 알파벳은 대문자로 변환
                 answer += String(sArr[i][index]).uppercased()
             }
         }

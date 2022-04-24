@@ -1,3 +1,4 @@
+// 클로저 : 사용자의 코드 안에서 전달되어 사용할 수 있는 로직을 가진 중괄호"{}" 구분된 코드의 블럭
 func solution(_ strings:[String], _ n:Int) -> [String] {
     return strings.sorted{Array($0)[n] == Array($1)[n] ? $0 < $1 : Array($0)[n] < Array($1)[n]}
 }

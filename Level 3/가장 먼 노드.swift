@@ -22,7 +22,7 @@ func dfs(graph: [[Int]]) -> Int {
     while !queue.isEmpty {
         let now = queue.removeFirst() // 먼저 들어온 노드부터 제거 (선입선출)
         for next in graph[now] {
-            if result[next] > result[now] + 1 { // 다음 노드 번호가 현재 노드 번호보다 멀리 떨어져 있고, 방문하지 않았던 노드인 경우
+            if result[next] > result[now] + 1 { // 다음으로 탐색할 노드 번호가 현재 노드보다 멀리 떨어져 있고, 방문하지 않았던 노드인 경우
                 result[next] = result[now] + 1 // 깊이 저장
                 queue.append(next) // 큐에 담기
             }

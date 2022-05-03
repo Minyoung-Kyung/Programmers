@@ -2,7 +2,7 @@ func solution(_ n:Int, _ edge:[[Int]]) -> Int {
     var graph : [[Int]] = Array(repeating: [], count: n + 1)
     
     // graph에 연결된 노드 정보 담기
-    // 3 : [6, 4, 2, 1], 6 : [3] ...
+    // [[], [3, 2], [3, 1, 4, 5], [6, 4, 2, 1], [3, 2], [2], [3]]
     for e in edge {
         graph[e[0]].append(e[1])
         graph[e[1]].append(e[0])

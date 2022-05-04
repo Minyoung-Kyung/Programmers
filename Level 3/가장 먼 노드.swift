@@ -12,23 +12,21 @@ func solution(_ n:Int, _ edge:[[Int]]) -> Int {
 }
 
 func dfs(graph: [[Int]]) -> Int {
-    var result = Array(repeating: 99999, count: graph.count) // 노드 번호, 깊이 (node, depth)
-    result[0] = 0
-    result[1] = 0
-    
+    var visited = Array(repeating: 0, count: graph.count) // 방문한 노드의 깊이를 저장할 배열
     var queue : [Int] = [] // 현재 탐색중인 노드 번호를 담을 큐
     queue.append(1) // 1번 노드부터 탐색
     
     while !queue.isEmpty {
         let now = queue.removeFirst() // 먼저 들어온 노드부터 제거 (선입선출)
         for next in graph[now] {
-            if result[next] > result[now] + 1 { // 다음으로 탐색할 노드 번호가 현재 노드보다 멀리 떨어져 있고, 방문하지 않았던 노드인 경우
-                result[next] = result[now] + 1 // 깊이 저장
-                queue.append(next) // 큐에 담기
+            if visited[next] == 0 { // 방문하지 않았던 노드인 경우
+                visited[next] = visited[now] + 1 // 방문 처리
+                queue.append(next) // 연결된 노드 큐에 담기
             }
         }
     }
+    visited[1] = 0 // 1번 노드는 초기화
     
-    let max = result.max() // 최대 노드 깊이
-    return result.filter{ max == $0 }.count // result에서 max와 같은 깊이 count
+    let max = visited.max() // 최대 노드 깊이
+    return visited.filter{ max == $0 }.count // result에서 max와 같은 깊이 count
 }

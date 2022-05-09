@@ -32,10 +32,12 @@ class Solution {
         // 순회 하면서 각 행에서 0이 아닌 값이 n-1개일 때 answer를 증가
         for(int i = 1; i <= n; i++){
             int cnt = 0;
+
             for(int j = 1; j <= n; j++){
                 if(floyd[i][j] != 0) cnt++;
             }
-            if(cnt == n-1) answer++;
+
+            if(cnt == n - 1) answer++;
         }
         
         return answer;

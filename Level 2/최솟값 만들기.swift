@@ -1,7 +1,6 @@
 import Foundation
 
-func solution(_ A:[Int], _ B:[Int]) -> Int
-{
+func solution(_ A:[Int], _ B:[Int]) -> Int {
     var ans = 0
     
     // 가장 작은 수와 가장 큰 수를 곱하기 위해 각 배열을 정렬

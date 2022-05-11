@@ -6,7 +6,7 @@ class Solution {
         int[][] floyd = new int[n+1][n+1];
         
         // floyd 배열에 이기면 1, 지면 -1을 저장
-        for(int i = 0; i < results.length; i++){
+        for (int i = 0; i < results.length; i++) {
             int A = results[i][0];
             int B = results[i][1];
             
@@ -14,14 +14,14 @@ class Solution {
             floyd[B][A] = -1; 
         }
         
-        for(int i = 1; i <= n; i++){
-            for(int j = 1; j <= n; j++){
-                for(int k = 1; k <= n; k++){
-                    if(floyd[i][k] == 1 && floyd[k][j] == 1){
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                for (int k = 1; k <= n; k++) {
+                    if (floyd[i][k] == 1 && floyd[k][j] == 1) {
                         floyd[i][j] = 1;
                         floyd[j][i] = -1;
                     }
-                    if(floyd[i][k] == -1 && floyd[k][j] == -1){
+                    if (floyd[i][k] == -1 && floyd[k][j] == -1) {
                         floyd[i][j] = -1;
                         floyd[j][i] = 1;
                     }
@@ -30,14 +30,14 @@ class Solution {
         }
         
         // 순회 하면서 각 행에서 0이 아닌 값이 n-1개일 때 answer를 증가
-        for(int i = 1; i <= n; i++){
+        for (int i = 1; i <= n; i++) {
             int cnt = 0;
 
-            for(int j = 1; j <= n; j++){
-                if(floyd[i][j] != 0) cnt++;
+            for (int j = 1; j <= n; j++) {
+                if (floyd[i][j] != 0) cnt++;
             }
 
-            if(cnt == n - 1) answer++;
+            if (cnt == n - 1) answer++;
         }
         
         return answer;

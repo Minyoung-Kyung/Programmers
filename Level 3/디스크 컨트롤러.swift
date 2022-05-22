@@ -1,25 +1,24 @@
-// 알고리즘
-// 1. 처음에는 가장 먼저 도착한 작업을 수행한다.
-// 2. 작업을 수행하는 동안 도착한 작업들을 별도의 작업 큐에 모은다.
-// 3. 작업 큐에 도착한 작업들 중 수행시간이 가장 짧은 작업을 꺼내 수행한다.
-// 모든 작업을 처리할 때까지 2, 3번 과정을 반복한다.
-
 func solution(_ jobs : [[Int]]) -> Int {
     let count = jobs.count
-    var jobs = jobs.sorted(by: {$0[0] == $1[0] ? $0[1] < $1[1] : $0[0] < $1[0]}) // 오름차순 정렬
+    
+    // jobs를 소요시간으로 정렬
+    var jobs = jobs.sorted(by: {$0[0] == $1[0] ? $0[1] < $1[1] : $0[0] < $1[0]})
     
     let first = jobs.removeFirst()
     var last = first[0] + first[1]
     var sum = first[1]
+    
+    // 소요시간으로 정렬된 jobs를 요청시간으로 정렬
     jobs.sort(by: {$0[1] == $1[1] ? $0[0] < $1[0] : $0[1] < $1[1]})
     
     while jobs.count != 0 {
         var removeIndex = -1
         var next = [Int]()
-        for i in 0..<jobs.count {
+        for i in 0..<jobs.count { // 정렬된 jobs의 길이만큼 순회
             next = jobs[i]
-            if next[0] <= last {
-                removeIndex = i
+            
+            if next[0] <= last { // 정렬된 jobs의 요청시간이 현재 시간보다 작거나 같은 경우
+                removeIndex = i // i번째를 삭제
                 break
             }
         }
@@ -38,5 +37,6 @@ func solution(_ jobs : [[Int]]) -> Int {
         sum += (last - next[0])
     }
     
+    // 전체 길이에서 jobs의 수만큼 나눈 것을 반환
     return sum / count
 }
